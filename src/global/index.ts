@@ -1,2 +1,3 @@
 export { default as ThemeProvider } from './providers/ThemeProvider';
 export { default as ClerkCustomProvider } from './providers/ClerkCustomProvider';
+export { default as ShadCnProvider } from './providers/ShadCnProvider';
