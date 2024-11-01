@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { ClerkCustomProvider, TanStackQueryProvider, ThemeProvider } from '@/global';
 import './globals.css';
-import { ClerkCustomProvider, ThemeProvider } from '@/global';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,7 +24,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <ClerkCustomProvider>{children}</ClerkCustomProvider>
+          <ClerkCustomProvider>
+            <TanStackQueryProvider>{children}</TanStackQueryProvider>
+          </ClerkCustomProvider>
         </ThemeProvider>
       </body>
     </html>

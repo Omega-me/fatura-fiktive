@@ -23,6 +23,7 @@ import { cn } from '@/common/utils';
 
 const AppSidebar = () => {
   const { open, isMobile } = useSidebar();
+
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
