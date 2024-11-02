@@ -1,14 +1,9 @@
 'use client';
-import React, { FC } from 'react';
+import React from 'react';
 import useInvoiceSummaryDeetailVm from '../useInvoiceSummaryDetailVm';
-import { IClientPageParams } from '@/common/interfaces';
 
-interface Props {
-  pageParams: IClientPageParams<{ id: string }>;
-}
-
-const InvoiceSummaryDetail: FC<Props> = (props) => {
-  const vm = useInvoiceSummaryDeetailVm({ ...props });
+const InvoiceSummaryDetail = () => {
+  const vm = useInvoiceSummaryDeetailVm();
   return <div>{vm.pathname}</div>;
 };
 
