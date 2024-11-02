@@ -15,9 +15,9 @@ const Navbar = () => {
       </div>
       <div className="flex justify-between items-center gap-8">
         <SignedIn>
-          <UserButton showName userProfileMode="modal" />
+          <UserButton showName={!isMobile} userProfileMode="modal" />
         </SignedIn>
-        <ModeToggle />
+        {!isMobile && <ModeToggle />}
       </div>
     </div>
   );

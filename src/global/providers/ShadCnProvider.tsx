@@ -1,5 +1,5 @@
 'use client';
-import { Navbar, Footer, AppSidebar } from '@/components';
+import { Navbar, AppSidebar } from '@/components';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import React, { PropsWithChildren } from 'react';
@@ -19,9 +19,6 @@ const ShadCnProvider: React.FC<Props> = ({ children }) => {
           </main>
         </TooltipProvider>
       </SidebarProvider>
-      <div className="w-full flex justify-center items-center">
-        <Footer />
-      </div>
     </>
   );
 };
