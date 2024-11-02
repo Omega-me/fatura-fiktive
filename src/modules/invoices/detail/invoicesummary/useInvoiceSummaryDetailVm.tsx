@@ -1,13 +1,7 @@
 'use client';
-import { IClientPageParams } from '@/common/interfaces';
 import { usePathname } from 'next/navigation';
 
-interface IVmConfig {
-  pageParams: IClientPageParams<{ id: string }>;
-}
-
-const useInvoiceSummaryDetailVm = (config: IVmConfig) => {
-  console.log(config);
+const useInvoiceSummaryDetailVm = () => {
   const pathname = usePathname();
   return { pathname };
 };

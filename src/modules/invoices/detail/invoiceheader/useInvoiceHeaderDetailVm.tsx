@@ -1,15 +1,9 @@
 'use client';
 
-import { IClientPageParams } from '@/common/interfaces';
 import { useSidebar } from '@/components/ui/sidebar';
 import { usePathname } from 'next/navigation';
 
-interface IVmConfig {
-  pageParams?: IClientPageParams<{ id: string }>;
-}
-
-export const useInvoiceHeaderDetailVm = (config: IVmConfig) => {
-  console.log(config.pageParams?.params.id);
+export const useInvoiceHeaderDetailVm = () => {
   const { isMobile } = useSidebar();
   const pathname = usePathname();
 

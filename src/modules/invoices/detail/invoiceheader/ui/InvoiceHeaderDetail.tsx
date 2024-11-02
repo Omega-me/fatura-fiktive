@@ -1,16 +1,11 @@
 'use client';
 
-import React, { FC } from 'react';
+import React from 'react';
 import { useInvoiceHeaderDetailVm } from '../useInvoiceHeaderDetailVm';
-import { IClientPageParams } from '@/common/interfaces';
 import { InvoicePreview } from '@/components';
 
-interface Props {
-  pageParams?: IClientPageParams<{ id: string }>;
-}
-
-const InvoiceHeaderDetail: FC<Props> = (props) => {
-  const vm = useInvoiceHeaderDetailVm({ ...props });
+const InvoiceHeaderDetail = () => {
+  const vm = useInvoiceHeaderDetailVm();
   return (
     <div>
       <InvoicePreview pathname={vm.pathname} isMobile={vm.isMobile} />
