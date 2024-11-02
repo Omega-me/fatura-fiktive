@@ -1,10 +1,10 @@
-import { FilePlus, Palette, ReceiptText } from 'lucide-react';
+import { FilePlus, ReceiptText } from 'lucide-react';
 import { eRoutes } from '../enums';
 
 export const sidebarConfig: Array<{
   id: number;
   title: string;
-  path: eRoutes;
+  path: string;
   Icon: React.ReactNode;
 }> = [
   {
@@ -17,12 +17,6 @@ export const sidebarConfig: Array<{
     id: 2,
     title: 'Krijo nje fature',
     Icon: <FilePlus />,
-    path: eRoutes.HOME,
-  },
-  {
-    id: 3,
-    title: 'Shto nje ngjyre',
-    Icon: <Palette />,
-    path: eRoutes.HOME,
+    path: `${eRoutes.INVOICE}/new`,
   },
 ];

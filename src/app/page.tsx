@@ -1,5 +1,5 @@
 import { InvoicesLanding } from '@/modules';
 
-export default function Home() {
+export default function InvoicesLandingPage() {
   return <InvoicesLanding />;
 }

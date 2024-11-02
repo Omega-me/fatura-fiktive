@@ -15,17 +15,20 @@ import {
   useSidebar,
 } from '../ui/sidebar';
 import Link from 'next/link';
-import { LogOut } from 'lucide-react';
+import { ChevronDown, LogOut, SunMoon } from 'lucide-react';
 import { SignOutButton } from '@clerk/nextjs';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { sidebarConfig } from '@/common/configs';
 import { cn } from '@/common/utils';
+import { useTheme } from 'next-themes';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
 
 const AppSidebar = () => {
   const { open, isMobile } = useSidebar();
+  const { setTheme } = useTheme();
 
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="sidebar" collapsible="icon">
       <SidebarHeader>
         {open && !isMobile ? (
           <SidebarTrigger sidebarLabel="Mbyll" className="w-full justify-start items-center pl-2" />
@@ -58,7 +61,7 @@ const AppSidebar = () => {
                   <div key={conf.id}>
                     {open ? (
                       <SidebarMenuButton asChild>
-                        <Link href={conf.path}>
+                        <Link href={`/${conf.path}`}>
                           {conf.Icon}
                           <span>{conf.title}</span>
                         </Link>
@@ -67,7 +70,7 @@ const AppSidebar = () => {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <SidebarMenuButton key={conf.id} asChild>
-                            <Link href={conf.path}>
+                            <Link href={`/${conf.path}`}>
                               {conf.Icon}
                               <span>{conf.title}</span>
                             </Link>
@@ -89,6 +92,35 @@ const AppSidebar = () => {
       </SidebarContent>
 
       <SidebarFooter>
+        {isMobile && (
+          <SidebarMenuButton>
+            <SunMoon />
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <SidebarMenuButton>
+                      Ndrysho aparencen
+                      <ChevronDown className="ml-auto" />
+                    </SidebarMenuButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+                    <DropdownMenuItem onClick={() => setTheme('light')}>
+                      <span>Light</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme('dark')}>
+                      <span>Dark</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme('system')}>
+                      <span>System</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarMenuButton>
+        )}
+
         {open ? (
           <SignOutButton>
             <SidebarMenuButton>
