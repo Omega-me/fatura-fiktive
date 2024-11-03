@@ -1,7 +1,12 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { eRoutes, eSteps } from '../enums';
+import { eMode, eRoutes, eSteps } from '../enums';
 
+/**
+ *
+ * @param inputs
+ * @returns
+ */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -38,13 +43,26 @@ export const getActiveStepFromPath = (pathName: string) => {
 
 /**
  *
- * @param steps
  * @param pathName
  * @returns
  */
-export const getPrevPathFromStep = (pathName: string) => {
-  const arr = pathName.split('/');
-  arr.pop();
-  const prevPath = arr.join('/');
-  return prevPath;
+export const getCompletedStepByPath = (pathName: string) => {
+  const paths = getInvoicStepPaths(pathName);
+  const invoiceCompleted = paths[0] && paths[1] === 'lines' ? true : false;
+  const linesCompleted = invoiceCompleted && paths[2] === 'price' ? true : false;
+  const pricesCompleted = linesCompleted && paths[3] === 'summary' ? true : false;
+  return {
+    invoiceCompleted,
+    linesCompleted,
+    pricesCompleted,
+  };
+};
+
+/**
+ *
+ * @param id
+ * @returns
+ */
+export const getModeById = (id: string) => {
+  return id && id === 'new' ? eMode.NEW : eMode.EDIT;
 };
