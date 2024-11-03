@@ -2,14 +2,21 @@
 
 import React from 'react';
 import { useInvoiceHeaderDetailVm } from '../useInvoiceHeaderDetailVm';
-import { InvoicePreview } from '@/components';
+import { InvoicePreview, StepFooterButtons } from '@/components';
+import { eInvoiceStepNames } from '@/common/enums';
 
 const InvoiceHeaderDetail = () => {
   const vm = useInvoiceHeaderDetailVm();
   return (
-    <div>
-      <InvoicePreview pathname={vm.pathname} isMobile={vm.isMobile} />
-    </div>
+    <>
+      <StepFooterButtons
+        prevDisabled={true}
+        nextDisabled={vm.isNextBtnDisabled()}
+        nextBtnName={eInvoiceStepNames.RRESHTAT}
+        onClickNextBtn={vm.onClickNextBtn}
+      />
+      <InvoicePreview />
+    </>
   );
 };
 

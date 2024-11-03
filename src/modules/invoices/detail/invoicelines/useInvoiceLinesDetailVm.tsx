@@ -1,11 +1,19 @@
-import { useSidebar } from '@/components/ui/sidebar';
-import { usePathname } from 'next/navigation';
+import { eRoutes } from '@/common/enums';
+import { useParams, useRouter } from 'next/navigation';
 
 const useInvoiceLinesDetailVm = () => {
-  const { isMobile } = useSidebar();
-  const pathname = usePathname();
+  const router = useRouter();
+  const params = useParams<{ id: string }>();
 
-  return { isMobile, pathname };
+  const onClickNextBtn = () => {
+    router.push(`/${eRoutes.INVOICE}/${params.id}/${eRoutes.INVOICE_LINES}/${eRoutes.INVOICE_PRICE}`);
+  };
+
+  const onClickPrevBtn = () => {
+    router.push(`/${eRoutes.INVOICE}/${params.id}`);
+  };
+
+  return { onClickNextBtn, onClickPrevBtn };
 };
 
 export default useInvoiceLinesDetailVm;

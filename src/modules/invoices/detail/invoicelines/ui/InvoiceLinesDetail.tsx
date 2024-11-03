@@ -1,14 +1,21 @@
 'use client';
 import React from 'react';
 import useInvoiceLinesDetailVm from '../useInvoiceLinesDetailVm';
-import { InvoicePreview } from '@/components';
+import { InvoicePreview, StepFooterButtons } from '@/components';
+import { eInvoiceStepNames } from '@/common/enums';
 
 const InvoiceLinesDetail = () => {
   const vm = useInvoiceLinesDetailVm();
   return (
-    <div>
-      <InvoicePreview pathname={vm.pathname} isMobile={vm.isMobile} />
-    </div>
+    <>
+      <StepFooterButtons
+        nextBtnName={eInvoiceStepNames.CMIMI}
+        prevBtnName={eInvoiceStepNames.FATURA}
+        onClickNextBtn={vm.onClickNextBtn}
+        onClickPrevBtn={vm.onClickPrevBtn}
+      />
+      <InvoicePreview />
+    </>
   );
 };
 
