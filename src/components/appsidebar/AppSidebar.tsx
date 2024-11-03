@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Sidebar,
   SidebarContent,
@@ -22,10 +22,19 @@ import { sidebarConfig } from '@/common/configs';
 import { cn } from '@/common/utils';
 import { useTheme } from 'next-themes';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import { usePathname } from 'next/navigation';
 
 const AppSidebar = () => {
   const { open, isMobile } = useSidebar();
   const { setTheme } = useTheme();
+
+  const { setOpenMobile } = useSidebar();
+  const pathname = usePathname();
+
+  // close sidebar when changing path for mobile view
+  useEffect(() => {
+    setOpenMobile(false);
+  }, [pathname, setOpenMobile]);
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">
