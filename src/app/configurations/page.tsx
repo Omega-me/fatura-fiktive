@@ -1,7 +1,8 @@
+import { ConfigurationsLanding } from '@/modules';
 import React from 'react';
 
 const ConfigLandingPage = () => {
-  return <div>ConfigLandingPage</div>;
+  return <ConfigurationsLanding />;
 };
 
 export default ConfigLandingPage;
