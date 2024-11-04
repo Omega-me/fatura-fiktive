@@ -3,3 +3,4 @@ export { default as InvoiceHeaderDetail } from './invoices/detail/invoiceheader/
 export { default as InvoiceLinesDetail } from './invoices/detail/invoicelines/ui/InvoiceLinesDetail';
 export { default as InvoicePriceDetail } from './invoices/detail/invoiceprice/ui/InvoicePriceDetail';
 export { default as InvoiceSummaryDeetail } from './invoices/detail/invoicesummary/ui/InvoiceSummaryDetail';
+export { default as ConfigurationsLanding } from './configurations/landing/ui/ConfigurationsLanding';

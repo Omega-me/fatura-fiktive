@@ -69,7 +69,7 @@ const AppSidebar = () => {
                 {sidebarConfig.map((conf) => (
                   <div key={conf.id}>
                     {open ? (
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton isActive={conf.path === '/' ? conf.path === pathname : `/${conf.path}` === pathname} asChild>
                         <Link href={`/${conf.path}`}>
                           {conf.Icon}
                           <span>{conf.title}</span>
@@ -78,7 +78,11 @@ const AppSidebar = () => {
                     ) : (
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <SidebarMenuButton key={conf.id} asChild>
+                          <SidebarMenuButton
+                            isActive={conf.path === '/' ? conf.path === pathname : `/${conf.path}` === pathname}
+                            key={conf.id}
+                            asChild
+                          >
                             <Link href={`/${conf.path}`}>
                               {conf.Icon}
                               <span>{conf.title}</span>
