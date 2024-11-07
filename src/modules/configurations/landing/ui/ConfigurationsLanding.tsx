@@ -10,7 +10,7 @@ const ConfigurationsLanding = () => {
   const vm = useConfigurationsLandingVm();
 
   return (
-    <Accordion className="px-[30px]" type="multiple">
+    <Accordion className="px-[30px] pb-5" type="multiple">
       <AccordionItem value="item-1">
         <AccordionTrigger>Konfigurimi i profileve</AccordionTrigger>
         <AccordionContent>

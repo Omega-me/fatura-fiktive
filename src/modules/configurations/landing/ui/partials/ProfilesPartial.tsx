@@ -18,7 +18,7 @@ const ProfilesPartial: FC<Props> = () => {
           Ngjyrat
         </TabsTrigger>
         <TabsTrigger className="w-full" value="koeficientet">
-          Koeficientet e izolimit te profilit
+          Koeficientet e izolimit
         </TabsTrigger>
       </TabsList>
       <TabsContent value="profilet">
