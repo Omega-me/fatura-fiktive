@@ -1,5 +1,5 @@
-import { InvoicesLanding } from '@/modules';
+import { AnalyticsLanding } from '@/modules';
 
 export default function InvoicesLandingPage() {
-  return <InvoicesLanding />;
+  return <AnalyticsLanding />;
 }

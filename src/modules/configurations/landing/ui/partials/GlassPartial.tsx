@@ -16,7 +16,7 @@ const GlassPartial: FC<Props> = () => {
             Xhamat
           </TabsTrigger>
           <TabsTrigger className="w-full" value="koeficientet">
-            Koeficientet i izolimit te xhamit
+            Koeficientet i izolimit
           </TabsTrigger>
         </TabsList>
         <TabsContent value="xhamat">

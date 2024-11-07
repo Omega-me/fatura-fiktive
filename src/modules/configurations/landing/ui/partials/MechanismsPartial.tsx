@@ -10,18 +10,36 @@ interface Props extends IConfigurationsLandingVm {}
 const MechanismsPartial: FC<Props> = () => {
   return (
     <div>
-      <Tabs defaultValue="Roletat" className="w-full">
-        <TabsList className="w-full md:w-[55%] lg:w-[40%] flex justify-evenly">
+      <Tabs defaultValue="Mekanizmat" className="w-full">
+        <TabsList className="w-full md:w-[65%] lg:w-[50%] flex justify-evenly">
+          <TabsTrigger className="w-full" value="Mekanizmat">
+            Mekanizmat
+          </TabsTrigger>
           <TabsTrigger className="w-full" value="Roletat">
             Roletat
           </TabsTrigger>
           <TabsTrigger className="w-full" value="rrjeta">
-            Rrjeta per insekte
+            Rrjetat
           </TabsTrigger>
           <TabsTrigger className="w-full" value="Motoret">
             Motoret
           </TabsTrigger>
         </TabsList>
+        <TabsContent value="Mekanizmat">
+          <Card>
+            <CardHeader>
+              <CardTitle>Llojet e mekanizmave</CardTitle>
+              <CardDescription>Shiko dhe konfiguro listen e mekanizmave</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat porro, veniam ea dolorum suscipit eum culpa nobis pariatur minus,
+              consectetur magni impedit excepturi adipisci est asperiores dicta libero alias. Aspernatur.
+            </CardContent>
+            <CardFooter>
+              <Button>Shto nje mekanizem</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
         <TabsContent value="Roletat">
           <Card>
             <CardHeader>
@@ -55,7 +73,7 @@ const MechanismsPartial: FC<Props> = () => {
         <TabsContent value="Motoret">
           <Card>
             <CardHeader>
-              <CardTitle>Llojet e motoret</CardTitle>
+              <CardTitle>Llojet e motoreve</CardTitle>
               <CardDescription>Shiko dhe konfiguro listen e motoreve</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">

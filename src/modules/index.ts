@@ -4,3 +4,4 @@ export { default as InvoiceLinesDetail } from './invoices/detail/invoicelines/ui
 export { default as InvoicePriceDetail } from './invoices/detail/invoiceprice/ui/InvoicePriceDetail';
 export { default as InvoiceSummaryDeetail } from './invoices/detail/invoicesummary/ui/InvoiceSummaryDetail';
 export { default as ConfigurationsLanding } from './configurations/landing/ui/ConfigurationsLanding';
+export { default as AnalyticsLanding } from './analytics/landing/ui/AnalyticsLanding';
