@@ -3,6 +3,7 @@ import React from 'react';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '../ui/sheet';
 import FloatingButton from '../floatingbutton/FloatingButton';
 import { useSidebar } from '../ui/sidebar';
+import { Pdf } from '..';
 
 const InvoicePreview = () => {
   const { isMobile } = useSidebar();
@@ -15,7 +16,7 @@ const InvoicePreview = () => {
           <SheetTitle>Fatura nuk ka perfunduar ende</SheetTitle>
           <SheetDescription>Me poshte paraqitet nje pamje e fatures me te dhenat qe keni plotesuar deri tani</SheetDescription>
         </SheetHeader>
-        {/* Render pdf view step by step */}
+        <Pdf />
         <SheetFooter>{/* TODO:Add action button */}</SheetFooter>
       </SheetContent>
     </Sheet>

@@ -3,7 +3,7 @@
 import React from 'react';
 import { useInvoiceHeaderDetailVm } from '../useInvoiceHeaderDetailVm';
 import { InvoicePreview, StepFooterButtons } from '@/components';
-import { eInvoiceStepNames } from '@/common/enums';
+import { eInvoiceStepNames, eMode } from '@/common/enums';
 import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -15,8 +15,14 @@ const InvoiceHeaderDetail = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center">
-        <Card className="p-4 w-full lg:w-[80%] xl:w-[70%]">
+      <StepFooterButtons
+        prevDisabled={true}
+        nextDisabled={vm.isNextBtnDisabled()}
+        nextBtnName={eInvoiceStepNames.RRESHTAT}
+        onClickNextBtn={vm.onClickNextBtn}
+      />
+      <Card className="w-full flex justify-center">
+        <div className="p-4 w-full lg:w-[80%] xl:w-[70%]">
           <form>
             <div className="flex justify-between items-center">
               <div className="">
@@ -24,20 +30,24 @@ const InvoiceHeaderDetail = () => {
               </div>
               <div className="flex w-72 flex-col items-end gap-2">
                 <div className="flex items-center gap-2">
-                  <Label className="w-16">Order</Label>
+                  <Label className="w-fit">Numri i fatures</Label>
                   <Input className="w-36" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <Label className="w-16">Date</Label>
+                  <Label className="w-fit">Data e leshimit</Label>
                   <Input type="date" className="w-36" />
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:justify-between">
-              <Card className="p-4 mt-2 ">
-                <p>From:</p>
+            <div className="flex flex-col md:flex-row md:justify-between gap-2">
+              <Card className="p-4 mt-2 flex-auto">
+                <b>Shitesi:</b>
                 <div className="flex items-center gap-2 my-2">
                   <Label className="w-20">Name</Label>
+                  <Input />
+                </div>
+                <div className="flex items-center gap-2 my-2">
+                  <Label className="w-20">NIPT</Label>
                   <Input />
                 </div>
                 <div className="flex items-center gap-2 my-2">
@@ -57,8 +67,8 @@ const InvoiceHeaderDetail = () => {
                   <Input />
                 </div>
               </Card>
-              <Card className="p-4 mt-2 ">
-                <p>To:</p>
+              <Card className="p-4 mt-2 flex-auto">
+                <b>Bleresi:</b>
                 <div className="flex items-center gap-2 my-2">
                   <Label className="w-20">Name</Label>
                   <Input />
@@ -77,12 +87,9 @@ const InvoiceHeaderDetail = () => {
                 </div>
               </Card>
             </div>
-            <p>
-              <strong></strong>
-            </p>
           </form>
-        </Card>
-      </div>
+        </div>
+      </Card>
 
       <StepFooterButtons
         prevDisabled={true}
@@ -90,7 +97,8 @@ const InvoiceHeaderDetail = () => {
         nextBtnName={eInvoiceStepNames.RRESHTAT}
         onClickNextBtn={vm.onClickNextBtn}
       />
-      <InvoicePreview />
+      <div className="mb-20"></div>
+      {vm.mode === eMode.EDIT && <InvoicePreview />}
     </>
   );
 };

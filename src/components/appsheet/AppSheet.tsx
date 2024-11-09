@@ -9,6 +9,7 @@ interface Props {
   tootltip?: string;
   icon: ReactNode;
   content: ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const AppSheet: FC<Props> = (props) => {
@@ -20,7 +21,7 @@ const AppSheet: FC<Props> = (props) => {
         <Tooltip>
           <TooltipTrigger asChild>
             <SheetTrigger asChild>
-              <Button variant="outline" className="h-8 w-8 p-0">
+              <Button onClick={props.onClick} variant="outline" className="h-8 w-8 p-0">
                 {props.icon}
               </Button>
             </SheetTrigger>

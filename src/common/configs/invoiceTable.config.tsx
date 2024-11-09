@@ -1,21 +1,19 @@
 'use client';
-import { AppSheet } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, Eye, Trash2 } from 'lucide-react';
+import { ArrowUpDown, Copy, Eye, Trash2 } from 'lucide-react';
 
-export type LineDto = {
+export type InvoiceDto = {
   nr: number;
-  emertimi: string;
-  sasia: number;
-  gjeresia: number;
-  lartesia: number;
-  cmimi: number;
+  shitesi: string;
+  bleresi: string;
+  data: string;
+  pershkrimi: string;
   totali: number;
 };
 
-export const lineColumns: ColumnDef<LineDto>[] = [
+export const invoiceColumns: ColumnDef<InvoiceDto>[] = [
   {
     accessorKey: 'nr',
     header: 'Nr',
@@ -37,27 +35,27 @@ export const lineColumns: ColumnDef<LineDto>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'emertimi',
-    header: 'Emertimi',
-    cell: ({ row }) => <div className="capitalize">{row.getValue('emertimi')}</div>,
+    accessorKey: 'shitesi',
+    header: 'Shitesi',
+    cell: ({ row }) => <div className="capitalize">{row.getValue('shitesi')}</div>,
   },
   {
-    accessorKey: 'sasia',
+    accessorKey: 'bleresi',
     header: ({ column }) => {
       return (
         <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Sasia
+          Bleresi
           <ArrowUpDown />
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue('sasia')}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue('bleresi')}</div>,
   },
   {
-    accessorKey: 'gjeresia',
-    header: () => <div className="text-right">Gjeresia</div>,
+    accessorKey: 'data',
+    header: () => <div className="text-right">Data</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('gjeresia'));
+      const amount = parseFloat(row.getValue('data'));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat('en-US', {
@@ -69,32 +67,10 @@ export const lineColumns: ColumnDef<LineDto>[] = [
     },
   },
   {
-    accessorKey: 'lartesia',
-    header: () => <div className="text-right">Lartesia</div>,
+    accessorKey: 'pershkrimi',
+    header: () => <div className="text-right">Pershkrimi</div>,
     cell: ({ row }) => {
-      const lartesia = parseFloat(row.getValue('lartesia'));
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(lartesia);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
-  {
-    accessorKey: 'cmimi',
-    header: () => <div className="text-right">Cmimi</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('cmimi'));
-
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'LEK',
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
+      return <div className="text-right font-medium">{row.getValue('pershkrimi')}</div>;
     },
   },
   {
@@ -105,7 +81,7 @@ export const lineColumns: ColumnDef<LineDto>[] = [
 
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'LEK',
       }).format(amount);
 
       return <div className="text-right font-medium">{formatted}</div>;
@@ -115,17 +91,29 @@ export const lineColumns: ColumnDef<LineDto>[] = [
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
+      console.log(row);
       return (
         <div className="w-fit flex justify-end items-center gap-1">
-          <AppSheet
-            icon={<Eye />}
-            tootltip="Shiko rreshtin"
-            content={
-              <div>
-                <pre>{JSON.stringify(row)}</pre>
-              </div>
-            }
-          />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline" className="h-8 w-8 p-0">
+                <Eye />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Shiko faturen</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline" className="h-8 w-8 p-0">
+                <Copy />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Kopjo faturen</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="outline" className="h-8 w-8 p-0">

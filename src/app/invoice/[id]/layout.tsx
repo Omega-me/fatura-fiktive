@@ -1,6 +1,6 @@
 'use client';
 import { getActiveStepFromPath, getCompletedStepByPath } from '@/common/utils';
-import { Footer, Steper } from '@/components';
+import { Steper } from '@/components';
 import { useParams, usePathname } from 'next/navigation';
 import React, { FC, PropsWithChildren } from 'react';
 
@@ -19,7 +19,6 @@ const InvoiceLayout: FC<Props> = (props) => {
         </div>
         {props.children}
       </div>
-      <Footer />
     </>
   );
 };
