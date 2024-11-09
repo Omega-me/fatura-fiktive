@@ -18,7 +18,7 @@ export const useInvoiceHeaderDetailVm = () => {
     return mode === eMode.NEW;
   };
 
-  return { onClickNextBtn, isNextBtnDisabled };
+  return { onClickNextBtn, isNextBtnDisabled, mode };
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

@@ -13,16 +13,24 @@ interface Props {
 
 const StepFooterButtons: FC<Props> = (props) => {
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="my-2 w-full flex justify-center items-center">
       <div className="flex justify-between items-center mt-5 w-full">
-        <Button disabled={props.prevDisabled} onClick={props.onClickPrevBtn} variant="outline">
-          <ChevronLeft className="h-4 w-4" />
-          {props.prevBtnName}
-        </Button>
-        <Button disabled={props.nextDisabled} onClick={props.onClickNextBtn} variant="outline">
-          {props.nextBtnName}
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+        {props.prevDisabled ? (
+          <div />
+        ) : (
+          <Button onClick={props.onClickPrevBtn} variant="outline">
+            <ChevronLeft className="h-4 w-4" />
+            {props.prevBtnName}
+          </Button>
+        )}
+        {props.nextDisabled ? (
+          <div />
+        ) : (
+          <Button onClick={props.onClickNextBtn} variant="outline">
+            {props.nextBtnName}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        )}
       </div>
     </div>
   );

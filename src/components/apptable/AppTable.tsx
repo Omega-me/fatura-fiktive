@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { FC, ReactNode } from 'react';
 import { Button } from '../ui/button';
@@ -16,20 +17,19 @@ import {
 import { ChevronDown, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from '../ui/table';
 import { Input } from '@/components/ui/input';
-import { Payment } from '@/common/configs';
 import AppSheet from '../appsheet/AppSheet';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '../ui/dropdown-menu';
 
-interface Props<T> {
+interface Props {
   addRow?: {
     show: boolean;
     rightPanel: ReactNode;
   };
-  columns: ColumnDef<T>[];
-  data: T[];
+  columns: ColumnDef<any>[];
+  data: any;
 }
 
-const AppTable: FC<Props<Payment>> = (props) => {
+const AppTable: FC<Props> = (props) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -56,8 +56,8 @@ const AppTable: FC<Props<Payment>> = (props) => {
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
-          value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('email')?.setFilterValue(event.target.value)}
+          value={(table.getColumn('emertimi')?.getFilterValue() as string) ?? ''}
+          onChange={(event) => table.getColumn('emertimi')?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
         <DropdownMenu>
