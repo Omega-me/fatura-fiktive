@@ -12,7 +12,11 @@ const useInvoiceSummaryDetailVm = () => {
   const onClickPrevBtn = () => {
     router.push(`/${eRoutes.INVOICE}/${params.id}/${eRoutes.INVOICE_LINES}/${eRoutes.INVOICE_PRICE}`);
   };
-  return { onClickPrevBtn };
+
+  const onClickNextBtn = () => {
+    router.push(`/api/${eRoutes.INVOICES}/${params.id}/${eRoutes.INVOICE_DOWNLOAD}`);
+  };
+  return { onClickPrevBtn, onClickNextBtn };
 };
 
 export default useInvoiceSummaryDetailVm;
