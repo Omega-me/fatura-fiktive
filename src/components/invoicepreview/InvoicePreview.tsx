@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '../ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
 import FloatingButton from '../floatingbutton/FloatingButton';
 import { useSidebar } from '../ui/sidebar';
 import { Pdf } from '..';
+import { Card } from '../ui/card';
 
 const InvoicePreview = () => {
   const { isMobile } = useSidebar();
@@ -11,13 +12,15 @@ const InvoicePreview = () => {
   return (
     <Sheet>
       <FloatingButton />
-      <SheetContent hasCloseBnt={isMobile} className="mt-16 min-w-full md:min-w-[80%] xl:min-w-[70%]">
+      <SheetContent hasCloseBnt={isMobile} className="mt-16 min-w-full md:min-w-fit">
         <SheetHeader>
           <SheetTitle>Fatura nuk ka perfunduar ende</SheetTitle>
-          <SheetDescription>Me poshte paraqitet nje pamje e fatures me te dhenat qe keni plotesuar deri tani</SheetDescription>
         </SheetHeader>
-        <Pdf />
-        <SheetFooter>{/* TODO:Add action button */}</SheetFooter>
+        <div className="p-2 mb-10 w-full h-[550px] overflow-auto scrollbar-thin">
+          <Card className="w-fit">
+            <Pdf isPdfMode={false} />
+          </Card>
+        </div>
       </SheetContent>
     </Sheet>
   );
