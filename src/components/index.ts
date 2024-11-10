@@ -8,4 +8,5 @@ export { default as InvoicePreview } from './invoicepreview/InvoicePreview';
 export { default as StepFooterButtons } from './stepfooterbuttons/StepFooterButtons';
 export { default as AppTable } from './apptable/AppTable';
 export { default as AppSheet } from './appsheet/AppSheet';
+export { default as PdfPreview } from './pdf/PdfPreview';
 export { default as Pdf } from './pdf/Pdf';

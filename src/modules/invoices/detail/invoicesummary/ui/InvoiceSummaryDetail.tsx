@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import useInvoiceSummaryDeetailVm from '../useInvoiceSummaryDetailVm';
-import { Pdf, StepFooterButtons } from '@/components';
+import { PdfPreview, StepFooterButtons } from '@/components';
 import { eInvoiceStepNames } from '@/common/enums';
 import { Card } from '@/components/ui/card';
 import { Download } from 'lucide-react';
@@ -20,7 +20,7 @@ const InvoiceSummaryDetail = () => {
       />
       <Card className="md:p-10 w-full flex justify-center">
         <Card className="p-4 w-auto md:flex justify-center gap-2 md:justify-end border-0 md:border-[1px] overflow-auto scrollbar-thin">
-          <Pdf isPdfMode={false} />
+          <PdfPreview />
         </Card>
       </Card>
       <StepFooterButtons
