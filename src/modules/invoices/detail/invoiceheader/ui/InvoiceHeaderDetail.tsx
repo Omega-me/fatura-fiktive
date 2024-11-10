@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import logo from '../../../../../../public/fake-logo.png';
 
+// TODO: add redirect to invoice header creation if no invoice exists with provided id
 const InvoiceHeaderDetail = () => {
   const vm = useInvoiceHeaderDetailVm();
 

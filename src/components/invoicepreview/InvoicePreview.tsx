@@ -3,7 +3,7 @@ import React from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
 import FloatingButton from '../floatingbutton/FloatingButton';
 import { useSidebar } from '../ui/sidebar';
-import { Pdf } from '..';
+import { PdfPreview } from '..';
 import { Card } from '../ui/card';
 
 const InvoicePreview = () => {
@@ -18,7 +18,7 @@ const InvoicePreview = () => {
         </SheetHeader>
         <div className="p-2 mb-10 w-full h-[550px] overflow-auto scrollbar-thin">
           <Card className="w-fit">
-            <Pdf isPdfMode={false} />
+            <PdfPreview />
           </Card>
         </div>
       </SheetContent>

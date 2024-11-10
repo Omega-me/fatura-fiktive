@@ -9,6 +9,8 @@ interface Props {
   nextDisabled?: boolean;
   onClickPrevBtn?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onClickNextBtn?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  prevIcon?: React.ReactNode;
+  nextIcon?: React.ReactNode;
 }
 
 const StepFooterButtons: FC<Props> = (props) => {
@@ -19,7 +21,7 @@ const StepFooterButtons: FC<Props> = (props) => {
           <div />
         ) : (
           <Button onClick={props.onClickPrevBtn} variant="outline">
-            <ChevronLeft className="h-4 w-4" />
+            {props.prevIcon ? props.prevIcon : <ChevronLeft className="h-4 w-4" />}
             {props.prevBtnName}
           </Button>
         )}
@@ -28,7 +30,7 @@ const StepFooterButtons: FC<Props> = (props) => {
         ) : (
           <Button onClick={props.onClickNextBtn} variant="outline">
             {props.nextBtnName}
-            <ChevronRight className="h-4 w-4" />
+            {props.nextIcon ? props.nextIcon : <ChevronRight className="h-4 w-4" />}
           </Button>
         )}
       </div>
